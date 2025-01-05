@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Blender</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1287cb9d-3c40-805e-a7ef-de2f7dc3665d" class="page sans"><header><h1 class="page-title">Blender</h1><p class="page-description"></p></header><div class="page-body"><h2 id="1287cb9d-3c40-800b-a5c8-c5686b969eed" class="">Singe (Suzane)</h2><p id="1287cb9d-3c40-802b-b608-d4b0047a085e" class="">J’ai d’abord importé l’entité “monkey” sur blender en faisant <code>shit+a</code> , ensuite je suis passé en mode <code>UV EDITING</code> pour dessiner et texturer Suzane, j’ai d’abord séparer différents éléments du singe, comme le visage, les yeux, les oreilles…</p><figure id="14e7cb9d-3c40-80f0-b99a-d267c9d9bc38" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image.png"><img style="width:634.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image.png"/></a></figure><p id="14e7cb9d-3c40-809a-8355-cd16f39a54d7" class="">Après avoir exporté le modèle pour dessiner par dessus :</p><figure id="14e7cb9d-3c40-8081-81b5-e81bc39299d5" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/Suzanne.png"><img style="width:635px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/Suzanne.png"/></a></figure><p id="14e7cb9d-3c40-80bb-8ca7-ec3759f7f5bd" class="">J’ai utilisé le logiciel <strong>GIMP</strong> pour dessiner, j’ai voulu adopté un style “minimalist” et “cartoon” :</p><figure id="14e7cb9d-3c40-80dc-9a6b-f1ebbe79e76f" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/Suzanne1.png"><img style="width:635px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/Suzanne1.png"/></a></figure><p id="14e7cb9d-3c40-803d-9187-f18283181492" class="">j’ai donc dessiné sur chaque pièce.</p><p id="14e7cb9d-3c40-8021-9084-d3e4877b4aaa" class="">Ensuite, j’ai relié le rendu dessiné avec le “<em>base color</em>” de Suzane ce qui permet d&#x27;appliquer une texture à la surface de l&#x27;objet.</p><figure id="14e7cb9d-3c40-80e7-afa9-c0cb93444d35" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%201.png"><img style="width:2296px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%201.png"/></a></figure><p id="14e7cb9d-3c40-80b3-aa9c-da23c281bd07" class="">Après avoir appliqué mon dessin à mon rendu et avoir cliqué sur <code>Z</code> et sur <code>Rendered</code> pour avoir un aperçu de mon rendu, voici le résultat:</p><figure id="14e7cb9d-3c40-80fd-958c-f2edba5aadf1" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%202.png"><img style="width:634.984375px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%202.png"/></a></figure><p id="14e7cb9d-3c40-807f-84fa-f78645cfd9a9" class="">Il me reste plus qu’à configurer l’éclairage et la caméra et à lancer le rendu avec <code>F12</code> ou en cliquant sur <code>Render</code> et <code>Render Image</code> , voici le résultat :</p><figure id="14e7cb9d-3c40-803b-aff5-dae62cdd037d" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%203.png"><img style="width:634.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%203.png"/></a></figure><h2 id="14e7cb9d-3c40-8086-84be-d461e4d56dcb" class="">Tonneau</h2><p id="1727cb9d-3c40-800d-80c7-e5b6417e5158" class="">J’ai fais 2 type de tonneau, un en cartoon, comme celui que je vais vous montrer et un autre que l’on a fait en cours.</p><hr id="1727cb9d-3c40-80ee-b967-c6be1f9fcb97"/><p id="14e7cb9d-3c40-807c-9c90-c4313e2bbc7a" class="">Pour créer un tonneau, j’ai d’abord importé un <code>Cylinder</code> en faisant <code>Shift + A</code> puis <code>Mesh</code> puis j’ai donc sélectionné <code>Cylinder</code> </p><figure id="14e7cb9d-3c40-80a8-9ff4-d525d0394444" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%204.png"><img style="width:634.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%204.png"/></a></figure><p id="14e7cb9d-3c40-8075-b242-cea89142bfd6" class="">Après avoir importé le <code>Cylinder</code> je suis passé en <code>edit mode</code> en faisant <code>tab</code> j’ai choisis cliqué sur la touche <code>3</code> sur le clavier pour sélectionner les faces et j’ai choisis la face du haut et du bas du cylindre.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="14e7cb9d-3c40-8002-bc80-c127e7b87a6a"><div style="font-size:1.5em"><span class="icon">ℹ️</span></div><div style="width:100%"><p id="97c54a35-8de1-4876-999f-aba6f9a2df80" class="">Je peux aussi agrandir le cylindre pour avoir un plus grand tonneau, personnellement, j’en veux un petit.</p></div></figure><p id="14e7cb9d-3c40-809c-a4e8-d0321729f4e9" class="">Après, j’ai cliqué sur <code>Inset faces</code> qui permet d’insérer une face à l’intérieur d’une autre, et j’ai glissé un tout petit peu pour obtenir ceci :</p><figure id="14e7cb9d-3c40-806e-a97f-ec6b0a5732e8" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%205.png"><img style="width:634.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%205.png"/></a></figure><p id="14e7cb9d-3c40-80f7-af74-dfdfe459a62a" class="">Ensuite j’utilise l’outil <code>Extrude</code> pour rentrer la face vers l’intérieur:</p><figure id="14e7cb9d-3c40-8015-a628-fd96c63af808" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%206.png"><img style="width:634.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%206.png"/></a></figure><p id="14e7cb9d-3c40-8055-8bb0-d085236f602c" class="">Je fais cela pour la face du haut et du bas.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="14e7cb9d-3c40-80de-9bcc-de9736b28212"><div style="font-size:1.5em"><span class="icon">ℹ️</span></div><div style="width:100%"><p id="9ec5bcf8-2d97-4664-8c6d-e53a57b09b1c" class="">À partir de maintenant, je vais moins détailler pour pas que ce soit trop long.</p></div></figure><p id="14e7cb9d-3c40-80ff-8246-c641966b8c1c" class="">Pour avoir l’effet “bombé” du tonneau, j’utilise l’outil <code>Loop Cut</code> et je fais trois coupure.</p><p id="14e7cb9d-3c40-80c1-a6df-c060ad47de03" class="">Je clique <code>Proportional editing</code>  ou <code>O</code> pour mettre tout à l’échelle.</p><p id="14e7cb9d-3c40-8067-a0c7-c9c8bc96940a" class="">Je sélectionne la coupure du milieu et je l’agrandi avec l’outil <code>Scale</code> (raccourci : <code>Shift + Espace + S</code>) puis je sélectionne la coupure du bas et du haut avec <code>shift</code> pour avoir les deux et j’agrandi encore avec l’outil <code>Scale</code> :</p><figure id="14e7cb9d-3c40-80a9-872b-e20ded08a94b" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%207.png"><img style="width:634.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%207.png"/></a></figure><p id="14e7cb9d-3c40-80ea-b9ee-e436cb5769da" class="">Pour avoir le petit cerclage en acier du tonneau il y a plusieurs méthode, personnellement je vais utiliser cette méthode :</p><p id="14e7cb9d-3c40-806e-9beb-f4268da2f059" class="">D’abord, j’ajoute un nouveau cylindre.</p><p id="14e7cb9d-3c40-80a2-aaa6-cab09662530a" class="">Je l’agrandi pour qu’il soit plus grand que mon dernier tonneau :</p><figure id="14e7cb9d-3c40-801d-9525-f7eb7d8a2213" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%208.png"><img style="width:634.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%208.png"/></a></figure><p id="14e7cb9d-3c40-8088-84c4-cef1eff766c5" class="">Je passe ensuite en <code>Edit mode</code> , puis en <code>Face selection</code> , je sélectionne la face du bas du tonneau et je la ramène vers le haut :</p><figure id="14e7cb9d-3c40-809f-b6b6-d6fb8ded9a77" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%209.png"><img style="width:634.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%209.png"/></a></figure><p id="14e7cb9d-3c40-804c-8ab0-da7af90d14ae" class="">J’arrange la taille avec l’outil <code>Scale</code> </p><figure id="14e7cb9d-3c40-8058-867d-c89c3c9dec3f" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2010.png"><img style="width:634.984375px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2010.png"/></a></figure><p id="14e7cb9d-3c40-8080-9cae-e54dbe9aa10e" class="">Après, je passe en <code>Object mode</code> , j’ajoute un modifier dans le menu de droite et j’ajoute un <code>Boolean</code> je le met en <code>difference</code> et avec la pipette je sélectionne le tonneau :</p><figure id="14e7cb9d-3c40-80f6-b4a5-f6ff2c9f589c" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2011.png"><img style="width:3418px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2011.png"/></a></figure><p id="14e7cb9d-3c40-80fe-9c87-d7a6c354e60e" class="">Comme vous pouvez le voir, <strong>Blender</strong> à fait la difference entre mon tonneau et mon anneau et à fait la découpe tout seul.</p><p id="14e7cb9d-3c40-80f0-a35d-e1a8d507d12a" class="">Je passe ensuite en <code>Viewport Shading</code> et je fais <code>Shift + D</code> pour dupliquer l’anneau et le mettre en bas de mon tonneau.</p><figure id="14e7cb9d-3c40-8080-97b9-c490f27b0cee" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2012.png"><img style="width:634.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2012.png"/></a></figure><p id="14e7cb9d-3c40-80c1-94d1-f30da8409e26" class="">Je met le dernier anneau au milieu, je le met bien à l’échelle et voici le résultat</p><figure id="14e7cb9d-3c40-809f-9634-d7b26b14863b" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2013.png"><img style="width:634.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2013.png"/></a></figure><p id="14e7cb9d-3c40-8053-b89c-c74fe8e0d00c" class="">Je peux aussi faire un <code>Auto smooth</code> en sélectionnant les 3 anneau et en faisant <code>clic droit</code> et <code>Shade auto smooth</code> </p><p id="14e7cb9d-3c40-809e-b361-e0413e3a274b" class="">Nous avons maintenant notre forme de tonneau, il manque juste les textures !</p><p id="14e7cb9d-3c40-80aa-836a-d1c10dcbf8b5" class="">Pour cela, j’ai choisis encore une fois de prendre un thème “Minimalist” et “Cartoon” (mon thème préféré).</p><p id="14e7cb9d-3c40-8030-8e9e-d9a905fe6c38" class="">J’ai choisis cette texture pour le bois :</p><figure id="14e7cb9d-3c40-80bb-81ac-f89cb35e10ca" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/light-brown-cartoon-wood-texture-pattern-wallpaper-background-free-vector.jpg"><img style="width:634.984375px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/light-brown-cartoon-wood-texture-pattern-wallpaper-background-free-vector.jpg"/></a></figure><p id="14e7cb9d-3c40-80c1-af15-e770bdf746ff" class="">Et celle-ci pour les anneaux :</p><figure id="14e7cb9d-3c40-800c-b521-ff1f4547e072" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/metal_texture_3_by_wojtar_stock_dzqg9s-fullview.jpg"><img style="width:392px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/metal_texture_3_by_wojtar_stock_dzqg9s-fullview.jpg"/></a></figure><p id="14e7cb9d-3c40-80ca-a98b-c5372d9950bd" class="">Maintenant il faudra passer en <code>Shading mode</code> en cliquant sur <code>Shading</code> en haut dans le menu.</p><p id="14e7cb9d-3c40-8019-b2ac-c4ba1ef65f83" class="">Après, on clique sur le tonneau, on clique sur <code>new</code> dans la fenêtre en bas, on importe l’image en glissant l’image dans la fenêtre en bas, et on lie l’image avec <code>base color</code></p><figure id="14e7cb9d-3c40-8069-ad45-ede796c46506" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2014.png"><img style="width:634.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2014.png"/></a></figure><p id="14e7cb9d-3c40-8011-a0c1-f4a20fe9c0ef" class="">Nous faisons pareil pour les anneaux.</p><figure id="14e7cb9d-3c40-8036-b4dd-dcc09c0c46f0" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2015.png"><img style="width:634.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2015.png"/></a></figure><p id="14e7cb9d-3c40-80c5-9d56-e66fb19d1b3d" class="">Nous avons plus qu’à configurer la lumière et la caméra pour passer au rendu !</p><p id="14e7cb9d-3c40-80f4-aca9-d8d3a9dabc54" class="">J’ai déplacé la lumière et la caméra comme je le voulais.</p><p id="14e7cb9d-3c40-80de-ade1-cc5ba72a110e" class="">J’ai enfin cliqué sur <code>F12</code> pour faire le rendu !</p><figure id="14e7cb9d-3c40-8091-bbce-e4e838fead51" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2016.png"><img style="width:634.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2016.png"/></a></figure><p id="14e7cb9d-3c40-8017-8712-c2dce44d7644" class="">Voici le rendu final.</p><h2 id="14e7cb9d-3c40-8048-91d8-ddcdc04fa187" class="">Mon propre objet (Une mallette)</h2><p id="1727cb9d-3c40-8059-8c89-f3c6b13adc45" class="">J’ai suivi en partie ce tuto, que j’ai modifié à mon goût :</p><p id="1727cb9d-3c40-8004-88b6-f54bd57de24d" class=""><a href="https://www.youtube.com/watch?v=iBC1wzLmB48">https://www.youtube.com/watch?v=iBC1wzLmB48</a></p><hr id="1727cb9d-3c40-8006-b4c5-d0633fc25a55"/><p id="1527cb9d-3c40-806c-9efc-c8e53d9e2321" class="">Dans un premier temps, j’ai importé une cube (<code>Shift + A)</code>), et je l’ai redimensionné avec l’outil <code>Scale</code>.</p><p id="1527cb9d-3c40-80ed-879a-c144391ca820" class="">Après, j’ai “<strong>arrondi</strong>” les bords avec <code>Ctrl + b</code> et j’ai utilisé la molette pour arrondir.</p><figure id="1527cb9d-3c40-80ba-846e-c43da133cb1b" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2017.png"><img style="width:707.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2017.png"/></a></figure><p id="1527cb9d-3c40-80c0-acf7-f33a326d1b54" class="">j’ai fais pareil avec les faces de devant et de derrière :</p><figure id="1527cb9d-3c40-80dd-9073-c4f92a1e57a7" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2018.png"><img style="width:707.984375px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2018.png"/></a></figure><p id="1527cb9d-3c40-8035-b9e8-c7043ead82ac" class="">Après, j’ai fais un “<strong>loop cut</strong>”, au milieu avec <code>Ctrl + R</code> </p><figure id="1527cb9d-3c40-8096-a674-f67b3d9b55e3" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2019.png"><img style="width:707.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2019.png"/></a></figure><p id="1527cb9d-3c40-80a8-ba83-f580b0ba33f9" class="">Pour faire la fente du milieu et avec <code>Ctrl + B</code> j’ai effectué des petites découpes</p><p id="1527cb9d-3c40-80f2-a6ae-cd4849648dee" class="">J’ai ensuite “<strong>Scale</strong>” le milieu pour faire la fente : </p><figure id="1527cb9d-3c40-80e4-94bd-fdaf73819356" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2020.png"><img style="width:707.984375px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2020.png"/></a></figure><p id="1527cb9d-3c40-8083-b685-c17ae5711d5f" class="">Il manque maintenant la poignée, nous allons créer un objet “<strong>Plane</strong>” avec <code>Shift + A</code>.</p><p id="1527cb9d-3c40-804c-95ac-fe1a3a37b2c9" class="">J’ai redimensionné le plane et je me suis mis sur le côté </p><p id="1527cb9d-3c40-80df-a33a-d61b05a8a5a3" class="">En cliquant sur l’axe <strong>Y </strong></p><figure id="1527cb9d-3c40-8060-bd0f-d95e47a7ab2d" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2021.png"><img style="width:278px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2021.png"/></a></figure><figure id="1527cb9d-3c40-8048-98de-cdc4b2b97e05" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2022.png"><img style="width:707.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2022.png"/></a></figure><p id="1527cb9d-3c40-8011-87d1-da32fa1db798" class="">Puis je me suis mis face à la mallette en cliquant sur l’axe <strong>X</strong></p><figure id="1527cb9d-3c40-80bd-8f73-ee48939c8c07" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2023.png"><img style="width:278px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2023.png"/></a></figure><p id="1527cb9d-3c40-807e-93b0-c00960d4c452" class="">J’ai cliqué sur <code>TAB + E</code> pour agrandir le plane :</p><figure id="1527cb9d-3c40-80e4-95ab-cf137e3ecde9" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2024.png"><img style="width:2658px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2024.png"/></a></figure><p id="1527cb9d-3c40-800b-8170-c56dabace221" class="">J’ai formé cela :</p><figure id="1527cb9d-3c40-8080-b59b-c412e8348c5a" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2025.png"><img style="width:2682px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2025.png"/></a></figure><p id="1527cb9d-3c40-80ac-a1bb-e7a3976f69d5" class="">En cliquant sur <code>TAB + E</code> pour créer une angle et puis <code>Shift + Z</code></p><p id="1527cb9d-3c40-8059-a233-cea734de7af5" class="">Ensuite, j’ai arrondi le bord de la poignée avec <code>Ctrl + B</code> et la mollette</p><figure id="1527cb9d-3c40-802c-8ffa-cad152379b23" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2026.png"><img style="width:2178px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2026.png"/></a></figure><p id="1527cb9d-3c40-806c-a85a-d0d2fff7fedd" class="">j’ai ajouté un <strong>miroir</strong> dans les <strong>modifiers</strong> pour créer la deuxième partie de la poignée, et j’ai mis l’axe <strong>Z </strong>en <code>Axis</code>, <strong>X </strong>en <code>Bisect</code> et <strong>Z </strong>en <code>Flip</code>.</p><figure id="1527cb9d-3c40-8090-81fa-fbb25c7a5477" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2027.png"><img style="width:392px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2027.png"/></a></figure><figure id="1527cb9d-3c40-8097-9ae6-c7228f9c0bc1" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2028.png"><img style="width:707.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2028.png"/></a></figure><p id="1527cb9d-3c40-804f-b87a-dfab501ec830" class="">J’ai ensuite fait <code>Ctrl + 2</code> pour subdiviser et j’ai arrangé le tout :</p><figure id="1527cb9d-3c40-809f-9385-e999dc33f273" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2029.png"><img style="width:707.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2029.png"/></a></figure><p id="1527cb9d-3c40-809b-ba73-fff263a2d98f" class="">puis je suis reparti en mode objet et j’ai fait <code>clic droit + shade smooth</code> pour arrondir :</p><figure id="1527cb9d-3c40-8025-a2ba-f7967ac19fc9" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2030.png"><img style="width:707.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2030.png"/></a></figure><p id="1527cb9d-3c40-80ee-861b-f1190e842472" class="">Pour ajouter plus de détails, j’ai mis deux <code>Sphère</code> en faisant <code>Shift + A</code>  et j’ai ajouté une <strong>UV SPHERE</strong></p><figure id="1527cb9d-3c40-8092-9e66-dcaaf5a81a54" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2031.png"><img style="width:707.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2031.png"/></a></figure><p id="1527cb9d-3c40-80ec-8696-eaa20e32e3d4" class="">Pour plus de réalisme, j’ai scale le haut des <strong>Sphères</strong></p><figure id="1527cb9d-3c40-803d-9e08-e04626e96e1f" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2032.png"><img style="width:707.984375px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2032.png"/></a></figure><p id="1527cb9d-3c40-80df-a170-cc10329c8d18" class="">J’ai ajouté pour faire le locket un cube que j’ai redimensionné et placé à cet endroit :</p><figure id="1527cb9d-3c40-802a-b9d1-fea3191ab2c3" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2033.png"><img style="width:707.984375px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2033.png"/></a></figure><p id="1527cb9d-3c40-8018-b561-fbaf81f08035" class="">Ensuite, j’ai fais le bouton en faisant : <code>I</code> pour créer une petit carré au milieu et <code>E</code> pour dimensionner le bouton :</p><figure id="1527cb9d-3c40-8063-be37-cfeee64e6ec3" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2034.png"><img style="width:707.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2034.png"/></a></figure><p id="15e7cb9d-3c40-80bb-a447-c6bb7798e3a4" class="">J’ai arrangé la forme pour que ça ressemble mieux et j’ai replacé le bouton :</p><figure id="15e7cb9d-3c40-807b-84cc-f935225efb9f" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2035.png"><img style="width:707.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2035.png"/></a></figure><p id="1537cb9d-3c40-8095-9f16-c3ec32fd9508" class="">Pour donner cette forme au bouton, je fais <code>shift + Z</code> puis avec <code>B</code> je sélectionne la face où je souhaite rétrécir et je clique sur <code>S</code>:</p><figure id="15e7cb9d-3c40-801e-8b5f-c5002cde1cc5" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2036.png"><img style="width:396.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2036.png"/></a></figure><p id="15e7cb9d-3c40-80d4-8151-fb8574cc0a2c" class="">Je fais la même chose avec l’autre face :</p><figure id="15e7cb9d-3c40-8019-a4c5-c4647b919d0c" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2037.png"><img style="width:396.984375px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2037.png"/></a></figure><p id="15e7cb9d-3c40-805a-b75e-e66bc1d48e57" class="">Et je rajoute un effet miroir :</p><figure id="15e7cb9d-3c40-80cd-bc4a-ffe81dd4ca3a" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2038.png"><img style="width:396.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2038.png"/></a></figure><p id="15e7cb9d-3c40-8073-bb39-dbacc4460414" class="">Après avoir copié / collé :</p><figure id="15e7cb9d-3c40-807f-a2db-f5c0f07af905" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2039.png"><img style="width:2392px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2039.png"/></a></figure><p id="15e7cb9d-3c40-80d6-8dfd-ee0a75d5b0f9" class="">Voilà le résultat avant “coloriage” et ajout de texture :</p><figure id="15e7cb9d-3c40-8038-b84e-d4bbf4047fb5" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2040.png"><img style="width:707.984375px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2040.png"/></a></figure><p id="15e7cb9d-3c40-8055-aa53-f1768757bf85" class="">Pour ajouter de la couleur :</p><figure id="15e7cb9d-3c40-8056-89df-ed009fb0996e" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2041.png"><img style="width:396.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2041.png"/></a></figure><p id="15e7cb9d-3c40-80d5-95da-c841fe920adb" class="">J’ai mis personnellement ce style de couleur :</p><figure id="15e7cb9d-3c40-8028-8a60-ecc206267a78" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2042.png"><img style="width:707.984375px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2042.png"/></a></figure><h2 id="15e7cb9d-3c40-8089-ad74-f271470b7b53" class="">La pièce</h2><p id="16e7cb9d-3c40-8080-907d-d5102c8e3560" class="">Pour la pièce, j’ai choisis d’ajouter un signe “<strong>€</strong>” et des couleurs/ textures.</p><p id="1717cb9d-3c40-8096-89f9-fa96e60f3b6a" class="">Voici comment :</p><p id="1717cb9d-3c40-80df-b1b6-d5185040a606" class="">j’ai d’abord ajouté un texte avec le signe “€”, que j’ai converti en mesh avec : object → covert → mesh ou <code>ALT + C</code> </p><p id="1717cb9d-3c40-8098-9c73-cf85e4d0a2cc" class="">Après, j’ai augmenté la taille du mesh pour le rendre 3D et plus gros.</p><figure id="1717cb9d-3c40-805a-bb6d-ca35cb74bfe9" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2043.png"><img style="width:707.96875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2043.png"/></a></figure><p id="1717cb9d-3c40-80ae-bcab-ef8e7ab8ebe6" class="">Bien sûr avant cela, je me suis assuré de bien placé le texte au milieu de la pièce.</p><p id="1717cb9d-3c40-8036-90ab-f4bfab957edc" class="">Après cela, j’ai mis des couleurs et voici le résultat final :</p><figure id="1717cb9d-3c40-8048-98ed-d279c99154ef" class="image"><a href="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2044.png"><img style="width:707.9921875px" src="Blender%201287cb9d3c40805ea7efde2f7dc3665d/image%2044.png"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
